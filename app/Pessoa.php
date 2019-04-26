@@ -10,7 +10,7 @@ class Pessoa extends Model
     Use SoftDeletes;
     protected $table = 'pessoa';
     public $timestamps = false;
-    protected $fillable = array('id', 'nome', 'sobrenome', 'data_nasc', 'CPF');
+    protected $fillable = array('id', 'nome', 'sobrenome', 'data_nasc', 'cpf');
 
     //Relação com a tabela Usuario
      public function usuario()
