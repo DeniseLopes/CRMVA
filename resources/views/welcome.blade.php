@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>kosloski Vistos</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -12,12 +12,20 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
+                background-image:url("https://images.unsplash.com/photo-1445023086979-7244a12345a8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=751&q=80");
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+                color: #BDBDBD;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
+            }
+
+            .fundo{
+                width:100vw;
+                height:100vh;
+                background-color:rgba(0,0,0,0.5);
             }
 
             .full-height {
@@ -49,7 +57,7 @@
             }
 
             .links > a {
-                color: #636b6f;
+                color: #BDBDBD;
                 padding: 0 25px;
                 font-size: 13px;
                 font-weight: 600;
@@ -64,6 +72,10 @@
         </style>
     </head>
     <body>
+    
+    <div class="fundo">
+
+
         <div class="container">
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
@@ -74,7 +86,7 @@
                         <a href="{{ route('login') }}">Login</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <a href="{{ route('register') }}">Cadastro</a>
                         @endif
                     @endauth
                 </div>
@@ -82,9 +94,9 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Kosloski Vistos
                 </div>
-
+<!--
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
@@ -94,7 +106,10 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
+                -->
             </div>
+            </div>
+        </div>
         </div>
     </body>
 </html>

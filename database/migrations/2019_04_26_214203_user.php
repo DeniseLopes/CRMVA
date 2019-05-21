@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Pessoa extends Migration
+class User extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,17 @@ class Pessoa extends Migration
      */
     public function up()
     {
-        Schema::create('pessoa', function(Blueprint $table){
+        Schema::create('user', function(Blueprint $table){
             $table->increments('id');
-            $table->string('nome');
-            $table->string('sobrenome');
-            $table->date('data_nasc');
-            $table->integer('cpf');
-
-           
+            $table->string('email');
+            $table->string('senha');
+            
             $table->softDeletes();
 
         });
+
+        //referencia chave estrangeira
+        $table->foreign('pessoa_id')->references('id')->on('pessoa');
     }
 
     /**
@@ -33,6 +33,6 @@ class Pessoa extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pessoa');
+        Schema::dropIfExists('usuario');
     }
 }

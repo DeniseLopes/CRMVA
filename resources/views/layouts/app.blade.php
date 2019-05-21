@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>CRMVA</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -20,11 +20,11 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-         
+    <div id="app">
+        <nav class="navbar navbar-expand-md navbar-transparent bg-transparent navbar-laravel">
+            <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    CRMVA
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -49,7 +49,7 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown" >
+                            <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
@@ -71,6 +71,39 @@
                 </div>
             </div>
         </nav>
-       
-    
 
+        <main class="py-4">
+            @yield('content')
+        </main>
+    </div>
+</body>
+</html>
+<style>
+nav{
+
+ opacity:0.5;
+ -moz-opacity:0.6;
+ -webkit-opacity:0.5;
+}
+#app{
+    width:100vw;
+    height:100vh;
+   background-color:rgba(0,0,0,0.5);
+}
+html, body {
+    background-image:url("https://images.unsplash.com/photo-1445023086979-7244a12345a8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=751&q=80");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: #BDBDBD;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    height: 100vh;
+    margin: 0;
+}
+ a {
+    color:#BDBDBD;
+}
+
+
+
+</style>
