@@ -15,6 +15,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Satisfy&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -23,8 +24,8 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-transparent bg-transparent navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    CRMVA
+                <a class="navbar-brand font-weight-light "id="logo" href="{{ url('/') }}">
+                    Kosloski Vistos
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -41,11 +42,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('LOGIN') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('CADASTRAR') }}</a>
                                 </li>
                             @endif
                         @else
@@ -102,6 +103,16 @@ html, body {
 }
  a {
     color:#BDBDBD;
+    font-size: 20px;
+}
+
+.navbar-brand{
+    font-size: 40px;
+    font-family: 'Satisfy', cursive;
+}
+
+ li a:hover, #logo:hover{
+    color: #f2f2f2;
 }
 
 

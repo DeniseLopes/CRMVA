@@ -1,11 +1,11 @@
-@extends('layouts.app')
 
+@extends('template')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Página Inicial</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,11 +13,18 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    Bem vindo!
+                        
+                    <span> Bem vindo, {{Auth::user()->name}}!</span>
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+
+<style>
+span{
+    color:#0d0d0d;
+    font-weight: bold;
+}
+</style>
