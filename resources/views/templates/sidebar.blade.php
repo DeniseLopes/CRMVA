@@ -13,6 +13,7 @@
                     <li><i class="fab fa-wpforms" style="color:white"></i><a href='#'>DS's</a></li>
                    
                     <li><i class="fas fa-user-friends" style="color:white"></i><a href='#'>Clientes</a></li>
+                    <li><i class="fas fa-user-friends" style="color:white"></i><a href='/usuarios'>Usuários</a></li>
                 
                     <li><i class="far fa-calendar-alt" style="color:white"></i><a href='#'>Agendamentos</a></li>
                     <li><i class="fas fa-chart-line" style="color:white"></i><a href='#'>Relatórios</a></li>
@@ -34,10 +35,15 @@ span{
 }
 
         #sidebar {
-            background: #303e45;
+            background: #232323;
             position: fixed;
             min-width: 210px;
             min-height: 100vh;
+            box-shadow: 3px 4px #7B7676;
+            border-radius: 8px;
+            opacity:0.9;
+            -moz-opacity:0.9;
+            -webkit-opacity:0.9;
         }
 
         #sidebar a {
@@ -79,17 +85,31 @@ span{
             list-style: none;
 
         }
-        #logo{
-            color:red;
-        }
+      
       
 
-        #lista-menu li a {
+        #lista-menu li  {
             font-size:15px;
-            padding: 2px;
-            margin-left:5px;
+            padding: 12px;
+            margin: 5px 2px;
             font-family: 'Volkhov', serif;
+           box-shadow: 1px 2px 2px black;
+            border-radius: 5px;
+            
+        }
 
+        #lista-menu li:hover{
+            background-color: #777575;
+            
+        }
+
+        #lista-menu li a:hover{
+            color: black;
+            background-color:#777575;
+            text-decoration: none;
+        }
+        #lista-menu li a{
+            color:white;
         }
 
         #workspace {

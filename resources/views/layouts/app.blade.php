@@ -23,14 +23,17 @@
     <!--Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR|Nunito|Satisfy&display=swap" rel="stylesheet">
 
+    
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-transparent bg-transparent navbar-laravel">
             <div class="container">
-                <a class="navbar-brand font-weight-light "id="logo" href="{{ url('/') }}">
+                <a class="navbar-brand font-weight-light 
+                " id="logo" href="{{ url('/home') }}">
                     Kosloski Vistos
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -48,11 +51,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('LOGIN') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('CADASTRAR') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -86,16 +89,17 @@
 </body>
 </html>
 <style>
+
 nav{
 
- opacity:0.5;
- -moz-opacity:0.6;
- -webkit-opacity:0.5;
+ opacity:0.8;
+ -moz-opacity:0.8;
+ -webkit-opacity:0.8;
 }
 #app{
     width:100vw;
     height:100vh;
-   background-color:rgba(69,69,69,0.5);
+   background-color:#E2E0E0;
 }
 
  a {

@@ -91,7 +91,7 @@
     -moz-opacity:0.7;
     -webkit-opacity:0.7;
 }
-html, body {
+body {
     background-image:url("https://images.unsplash.com/photo-1445023086979-7244a12345a8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=751&q=80");
     background-repeat: no-repeat;
     background-size: 100% 100%;

@@ -46,9 +46,7 @@ span{
             color: #cfd8dc
         }
 
-        #sidebar a:hover {
-            background: #29353d
-        }
+       
 
         #sidebar a.active {
             color: #fff;
@@ -81,11 +79,10 @@ span{
             list-style: none;
 
         }
-        #logo{
-            color:red;
-        }
+        #logo {
+            color: #730D0D;
+         }
       
-
         #lista-menu li a {
             font-size:15px;
             padding: 2px;
@@ -136,23 +133,8 @@ span{
         nav {
             font-family: 'Nunito', sans-serif;
         }
+        
+
 
 </style>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script>
-        function toggleMenu() {
-            var sidebar = document.getElementById('sidebar');
-            var workspace = document.getElementById('workspace');
-            var header = document.getElementById('header');
-
-            var displaySidebar = sidebar.style.display === "none" ? "block" : "none";
-            var marginLeftWorkspace = workspace.style.marginLeft === "0px" ? "210px" : "0px";
-            var widthHeader = header.style.width === "100%" ? "calc(100% - 210px)" : "100%";
-
-            sidebar.style.display = displaySidebar;
-            workspace.style.marginLeft = marginLeftWorkspace;
-            header.style.width = widthHeader;
-        }
-    </script>
+  
