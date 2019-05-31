@@ -10,10 +10,11 @@
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
+                    @csrf
                         
                         
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right text-dark">{{ __('E-Mail') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right text-dark">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -27,7 +28,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right text-dark">{{ __('Senha') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right text-dark">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
@@ -46,7 +47,7 @@
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
-                                        {{ __('Lembre-me') }}
+                                    {{ __('Remember Me') }}
                                     </label>
                                 </div>
                             </div>
@@ -60,7 +61,7 @@
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Esqueceu sua senha?') }}
+                                    {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
                             </div>
@@ -89,5 +90,15 @@
     opacity:0.7;
     -moz-opacity:0.7;
     -webkit-opacity:0.7;
+}
+html, body {
+    background-image:url("https://images.unsplash.com/photo-1445023086979-7244a12345a8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=751&q=80");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: #BDBDBD;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    height: 100vh;
+    margin: 0;
 }
  </style>
