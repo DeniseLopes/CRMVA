@@ -21,11 +21,15 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <!--Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR|Nunito|Satisfy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Tinos&display=swap" rel="stylesheet">
 
         <!-- Styles -->
+   
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        @yield('css')
+    <link href="{{ asset('css/style.app.css') }}" rel="stylesheet">
+   
+    @yield('css')
 </head>
 <body>
     <div id="app">
@@ -33,7 +37,9 @@
             <div class="container">
                 <a class="navbar-brand font-weight-light 
                 " id="logo" href="{{ url('/home') }}">
-                    Kosloski Vistos
+                    <h1>Kosloski Vistos</h1>
+                    <p>Consultoria em Vistos</p>
+                   <!-- <img src="{{ url('img/logo.png') }}" >-->
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -54,7 +60,7 @@
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Cadastro') }}</a>
                                 </li>
                             @endif
                         @else
@@ -85,5 +91,6 @@
             @yield('content')
         </main>
     </div>
+    
 </body>
 </html>

@@ -15,8 +15,7 @@
             color: #cfd8dc
         }
 
-       
-
+   
         #sidebar a.active {
             color: #fff;
             background: #29353d;
@@ -48,10 +47,7 @@
             list-style: none;
 
         }
-        #logo {
-            color: #730D0D;
-         }
-      
+              
         #lista-menu li a {
             font-size:15px;
             padding: 2px;
@@ -101,6 +97,7 @@
 
         nav {
             font-family: 'Nunito', sans-serif;
+            
         }
         
 

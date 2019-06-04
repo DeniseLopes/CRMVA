@@ -1,26 +1,59 @@
-nav{
-
+nav {
     opacity:0.8;
     -moz-opacity:0.8;
     -webkit-opacity:0.8;
-   }
-   #app{
-       width:100vw;
-       height:100vh;
-      background-color:#E2E0E0;
-   }
+    
+}
+    
+a {
+    color: rgb(56,55,90);
+    font-size: 22px;
+}
+
+.nav-item{
+    color: rgb(56,55,90);
+}
    
-    a {
-       color:#BDBDBD;
-       font-size: 20px;
-   }
+.navbar-brand{
+    font-size: 40px;
+    font-family: 'Great Vibes', cursive;
+    font-family: 'Tinos', serif;
+    color: rgb(56,55,90);
+}
+
+.navbar-brand p{
+    font-size: 18px;
+    margin-top: -30px;
+    margin-right: 150px;
+    margin-left: 105px;
+}
+h1::first-letter{
+    color: #6F1603;
+    font-size: 60px;
+    font-family: 'Great Vibes', cursive;
+}
+
+li a:hover, #logo:hover{
+    color: #f2f2f2;
+}
    
-   .navbar-brand{
-       font-size: 40px;
-       font-family: 'Satisfy', cursive;
-   }
-   
-    li a:hover, #logo:hover{
-       color: #f2f2f2;
-   }
-   
+body{
+    background-image:url("https://images.unsplash.com/photo-1445023086979-7244a12345a8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=751&q=80");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    color: #BDBDBD;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    height: 100vh;
+    width:100vw;
+    
+}
+#app{
+    height: 100vh;
+    width:100vw;
+    /*background-color:rgba(0,0,0,0.3);*/
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,5));
+    top: 0;
+}
+
+
