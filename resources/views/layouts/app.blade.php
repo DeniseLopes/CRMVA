@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>CRMVA</title>
+    <title>Kosloski Vistos</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -23,10 +23,9 @@
     <!--Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR|Nunito|Satisfy&display=swap" rel="stylesheet">
 
-    
-    <!-- Styles -->
+        <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    
+        @yield('css')
 </head>
 <body>
     <div id="app">
@@ -88,34 +87,3 @@
     </div>
 </body>
 </html>
-<style>
-
-nav{
-
- opacity:0.8;
- -moz-opacity:0.8;
- -webkit-opacity:0.8;
-}
-#app{
-    width:100vw;
-    height:100vh;
-   background-color:#E2E0E0;
-}
-
- a {
-    color:#BDBDBD;
-    font-size: 20px;
-}
-
-.navbar-brand{
-    font-size: 40px;
-    font-family: 'Satisfy', cursive;
-}
-
- li a:hover, #logo:hover{
-    color: #f2f2f2;
-}
-
-
-
-</style>
