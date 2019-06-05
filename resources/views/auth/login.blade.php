@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
+@section('css')
  <!-- Styles -->
  <link href="{{ asset('css/login.css') }}" rel="stylesheet">
- 
+@endsection
 
 @section('content')
 <div class="fundo">

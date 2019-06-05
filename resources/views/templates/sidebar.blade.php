@@ -1,7 +1,7 @@
     
      <!-- Styles -->
     <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
-    @yield('css')
+    
     <!--Icon-->
     <header>
      <div id="sidebar">
@@ -49,8 +49,6 @@
                     <li><i class="far fa-calendar-alt" style="color:white"></i><a href='#'>Agendamentos</a></li>
                     <li><i class="fas fa-chart-line" style="color:white"></i><a href='#'>Relatórios</a></li>
                     <li><i class="fas fa-cog" style="color:white"></i><a href='#'>Configurações</a></li>
-                                   
-
                 </ul>
             </nav>
         </div>
