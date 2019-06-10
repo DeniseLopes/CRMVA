@@ -8,7 +8,20 @@ html, body {
     height: 100vh;
     margin: 0;
 }
+.titulo{
+    display: flex;
+    justify-content: center;
+    margin-top: 130px;
+    margin-left: 30px;
+    font-family: 'Nunito', sans-serif;
+    font-size:100px;
+}
 
+.subtitulo{
+    font-family: 'Nunito', sans-serif;
+    display: flex;
+    justify-content: center;
+}
 .fundo{
     width:100vw;
     height:100vh;

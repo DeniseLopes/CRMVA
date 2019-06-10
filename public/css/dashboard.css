@@ -1,4 +1,8 @@
-   
+
+        #app{
+            background-color: #cfd8dc;
+            background-image: none;
+        }
         span{
             color:#0d0d0d;
             font-weight: bold;

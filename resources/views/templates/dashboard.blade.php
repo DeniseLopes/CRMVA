@@ -6,7 +6,7 @@
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 <!-- Styles -->
-<link href="{{ asset('css/home.css') }}" rel="stylesheet">
+<link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
     @yield('css')
 
 <div class="container">
@@ -14,8 +14,7 @@
     <div class="row justify-content-center ">
         <div class="col-md-8">
             <div class="card">
-                @extends('templates.sidebar')
-         
+                     
                 <div class="card-header">Página Inicial</div>
 
                 <div class="card-body">
