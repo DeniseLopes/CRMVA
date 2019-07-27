@@ -29,7 +29,7 @@
 
 <body class="bg-img">
     <div id="app">
-        @yield('sidebar')
+        
         <nav class="navbar navbar-expand-md navbar-transparent bg-transparent navbar-laravel">
             <div class="container">
 
