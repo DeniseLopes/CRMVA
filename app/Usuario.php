@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\User;
 
 class Usuario extends Model
 {
@@ -12,12 +13,11 @@ class Usuario extends Model
     public $timestamps = false;
     protected $fillable = array('id', 'email', 'senha');
 
-    //Relação com a tabela Pessoa
-    public function pessoa()
+    //Relação com a tabela Users
+    public function user()
     {
-        return $this->belongsTo('App\Pessoa');
+        return $this->hasOne('App\User');
     }
-
     //Relação com a tabela Endereco
     public function endereco()
     {

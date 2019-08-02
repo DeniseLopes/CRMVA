@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use App\Usuario;
 
 use Illuminate\Http\Request;
 
@@ -28,10 +29,7 @@ class UsuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+  
 
     /**
      * Store a newly created resource in storage.
@@ -52,7 +50,7 @@ class UsuarioController extends Controller
      */
     public function show($id)
     {
-        //
+        //listar
     }
 
     /**
@@ -61,9 +59,11 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $id)
     {
-        //
+       
+        $usuario = Usuario::findOrFail($id);
+         return view('usuario.form', compact('usuario'));
     }
 
     /**
