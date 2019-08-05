@@ -3,7 +3,7 @@
 <div class="row justify-content-center ">
         <div class="col-md-8">
             <div class="card">
-                <!-- @extends('templates.sidebar') -->
+                
          
                 <div class="card-header">Página Inicial de Usuarios</div>
 

@@ -24,48 +24,26 @@ class UsuarioController extends Controller
         return view('usuario.index',compact('usuarios'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-  
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $usuario = new Usuario;
+        $usuario->create($request->all());
+        return redirect('/usuario');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    
+   /* public function show($id)
     {
         //listar
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(User $id)
+   /* public function edit(User $id)
     {
        
         $usuario = Usuario::findOrFail($id);
-         return view('usuario.form', compact('usuario'));
+         return view('usuario.index', compact('usuarios'));
     }
-
+*/
     /**
      * Update the specified resource in storage.
      *

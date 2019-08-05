@@ -22,4 +22,4 @@ Auth::routes();
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 /*Usuario*/
-Route::resource('/usuarios', 'UsuarioController');
+Route::resource('/usuario', 'UsuarioController');
