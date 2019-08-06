@@ -11,10 +11,21 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header bg-secondary mb-1 text-center text-white"><h3>{{(!isset($usuario))? __('Cadastro'): 'Editar' }}</h3></div>
+                <div class="card-header bg-secondary mb-1 text-center text-white">
+                    <h3>{{(!isset($usuario))? __('Cadastro'): 'Editar' }}</h3>
+                </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    @if(session('message'))
+                    <div class="alert alert-warning">
+                        {{ session('message') }}
+                    </div>
+                    @endif
+                    <form method="POST" action="{{(!isset($usuario)) ? route('register') : url('usuario/'. $usuario->id) }}">
+                        @if(isset($usuario))
+                        @method('PUT')
+                        @endif
+
                         @csrf
 
                         <div class="form-group row">
@@ -24,9 +35,9 @@
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{(!isset($usuario)) ? old('name'): $usuario->name}}" required autocomplete="name" autofocus>
 
                                 @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -38,23 +49,23 @@
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{(!isset($usuario)) ? old('email') : $usuario->email}}" required autocomplete="email">
 
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
                         @if(isset($usuario))
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right text-dark">Senha Atual</label>
+                            <label for="senhaAtual" class="col-md-4 col-form-label text-md-right text-dark">Senha Atual</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="senhaAtual" required autocomplete="new-password">
 
                                 @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -67,9 +78,9 @@
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -96,4 +107,3 @@
     </div>
 </div>
 @endsection
-
