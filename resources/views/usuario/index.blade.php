@@ -34,7 +34,7 @@
                             <td>{{$usuario->name}}</td>
                             <td>{{$usuario->email}}</td>
                       
-                            <td><a class='btn btn-info'>editar</a></td>
+                            <td><a class='btn btn-info btnEdit'   href="{{url('/usuario/'.$usuario->id.'/edit')}}">editar</a></td>
                             <td><a class='btn btn-danger'>remover</a></td>
                             </tr>
                             
@@ -48,3 +48,22 @@
     </div>
 </div>
 @endsection
+
+@yield('js')
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+<!-- <script type="text/javascript">
+$(document).ready(function(){
+    $('.btnEdit').click(function(){
+        alert((this).dataset.id);
+    })
+
+});
+
+
+
+</script> -->
+
+
