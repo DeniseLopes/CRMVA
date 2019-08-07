@@ -35,12 +35,6 @@ class UsuarioController extends Controller
     }
 
 
-    /* Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //   dd($request->all());
@@ -65,16 +59,14 @@ class UsuarioController extends Controller
       
         return redirect()->route('usuario.index')->with('message', 'Usuário atualizado com sucesso');
     }
-    /*
     
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    /*public function destroy($id)
+    public function destroy($id)
     {
-        //
+    
+        $usuario = User::findOrFail($id);
+      
+        $usuario->delete();
+        return back()->with('message', 'Usuário removido com sucesso');
     }
-    */
+    
 }

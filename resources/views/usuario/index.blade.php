@@ -14,40 +14,51 @@
                     {{ session('message') }}
                 </div>
                 @endif
-                @if (session('status'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
-                </div>
-                @endif
+                    
+  
+                <table class="table">
+                    
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">E-mail</th>
+
+                            <th scope="col" colspan='2'>Opções</th>
+                        </tr>
+                    </thead>
+                    @foreach($usuarios as $usuario)
+
+                    <tbody>
+                        <tr>
+                            <th scope="row">{{$usuario->id}}</th>
+                            <td>{{$usuario->name}}</td>
+                            <td>{{$usuario->email}}</td>
+                            <td><a class='btn btn-info btnEdit' href="{{url('/usuario/'.$usuario->id.'/edit')}}">editar</a></td>
+
+                            <td>
+                                <form method="POST" action="{{url('/usuario/'. $usuario->id)}}">
+                                    @method('delete')
+                                    @csrf
+                                    <button type="subimit" class='btn btn-danger'>remover</button>
+                                </form>
+                                @endforeach
+
+                            </td>
 
 
-                <div class="table">
-                    <table class="table">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">Id</th>
-                                <th scope="col">Nome</th>
-                                <th scope="col">E-mail</th>
 
-                                <th scope="col" colspan='2'>Opções</th>
-                            </tr>
-                        </thead>
-                        @foreach($usuarios as $usuario)
 
-                        <tbody>
-                            <tr>
-                                <th scope="row">{{$usuario->id}}</th>
-                                <td>{{$usuario->name}}</td>
-                                <td>{{$usuario->email}}</td>
 
-                                <td><a class='btn btn-info btnEdit' href="{{url('/usuario/'.$usuario->id.'/edit')}}">editar</a></td>
-                                <td><a class='btn btn-danger'>remover</a></td>
-                            </tr>
 
-                        </tbody>
-                        @endforeach
-                    </table>
-                </div>
+                        </tr>
+
+                    </tbody>
+
+
+
+                </table>
+
             </div>
         </div>
     </div>
