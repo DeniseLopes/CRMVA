@@ -12,7 +12,7 @@ class Usuario extends Model
     use SoftDeletes;
     protected $table = 'usuario';
     public $timestamps = false;
-    protected $fillable = array('id', 'email', 'senha');
+    protected $fillable = array('id', 'nome', 'email', 'senha', 'user_id');
 
     //Relação com a tabela Users
     public function user()

@@ -62,14 +62,7 @@
 
             <div class="card-header">Usuarios Inativos</div>
 
-            <div class="card-body">
-                @if(session('message'))
-                <div class="alert alert-success">
-                    {{ session('message') }}
-                </div>
-                @endif
-
-
+            
                 <table class="table">
 
                     <thead class="thead-dark">
@@ -94,7 +87,7 @@
                                 <form method="POST" action="{{url('/restore/'. $usuario->id)}}">
                                     @method('put')
                                     @csrf
-                                    <button type="subimit" class='btn btn-danger'>Restaurar</button>
+                                    <button type="subimit" class='btn btn-success'>Restaurar</button>
                                 </form>
                                 @endforeach
 
