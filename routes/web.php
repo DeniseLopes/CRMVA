@@ -23,3 +23,4 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 /*Usuario*/
 Route::resource('/usuario', 'UsuarioController');
+Route::put('/restore/{id}', 'UsuarioController@restore');

@@ -7,7 +7,7 @@ use App\Usuario;
 use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+
 
 class UsuarioController extends Controller
 {
@@ -24,8 +24,12 @@ class UsuarioController extends Controller
 
     public function index(User $usuario)
     {
-        $usuarios = $usuario->all();
-        return view('usuario.index', compact('usuarios'));
+         //Usuario ativos
+        $usuarios = User::all();
+       
+        //Excluido e não excluido
+        $usuariosDeletados = User::onlyTrashed()->get();
+        return view('usuario.index', compact('usuarios', 'usuariosDeletados'));
     }
 
     public function edit(Request $request, $id)
@@ -67,6 +71,13 @@ class UsuarioController extends Controller
       
         $usuario->delete();
         return back()->with('message', 'Usuário removido com sucesso');
+    }
+
+    public function restore($id)
+    {
+        $usuario = User::onlyTrashed()->findOrFail($id);
+        $usuario->restore();
+        return back();
     }
     
 }

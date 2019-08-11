@@ -24,7 +24,8 @@
                         </div>
                     @endif
                         
-                    <span> Bem vindo, {{Auth::user()->name}}!</span>
+                    <span> Bem vindo, {{Auth::user()->name}}!</span><br>
+                    <a href="{{url('/usuario')}}"><button>Novo Usuário</button></a>
                 </div>
             </div>
         </div>
