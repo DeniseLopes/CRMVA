@@ -12,12 +12,21 @@
 */
 
 Route::get('/', function () {
-    return view('templates.welcome');
+
+    $data = [
+        'title' => 'Kosloski Vistos',
+        'subtitle' => 'Sistema de Gerenciamento de Visto Americano'
+    ];
+    return view('templates.welcome', compact('data'));
 });
 
 
 
 Auth::routes();
+Route::get('/login', function(){
+    $data=['title'=>'Pagina de Login'];
+    return view('auth.login', compact('data'));
+});
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
