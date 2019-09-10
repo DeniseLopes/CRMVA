@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
 {
+    public $dadosTemplate;
     /**
      * Display a listing of the resource.
      *
@@ -20,13 +21,26 @@ class UsuarioController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except('index');
+        $moduleInfo = [
+            'icon' => 'store',
+            'name' => 'Estoque',
+        ];
+        $menu = [
+            ['icon' => 'shopping_basket', 'tool' => 'Produto', 'route' => url('/')],
+            ['icon' => 'format_align_justify', 'tool' => 'Categoria', 'route' => url('/')],
+            ['icon' => 'store', 'tool' => 'Estoque', 'route' => url('estoque')],
+        ];
+        $this->dadosTemplate = [
+            'moduleInfo' => $moduleInfo,
+            'menu' => $menu,
+        ];
     }
 
     public function index(User $usuario)
     {
-         //Usuario ativos
+        //Usuario ativos
         $usuarios = User::all();
-       
+
         //Excluido e não excluido
         $usuariosDeletados = User::onlyTrashed()->get();
         return view('usuario.index', compact('usuarios', 'usuariosDeletados'));
@@ -60,15 +74,15 @@ class UsuarioController extends Controller
             return back()->with('message', 'A senha deve conter no minimo 8 digitos');
         }
 
-      
+
         return redirect()->route('usuario.index')->with('message', 'Usuário atualizado com sucesso');
     }
-    
+
     public function destroy($id)
     {
-    
+
         $usuario = User::findOrFail($id);
-      
+
         $usuario->delete();
         return back()->with('message', 'Usuário removido com sucesso');
     }
@@ -79,5 +93,4 @@ class UsuarioController extends Controller
         $usuario->restore();
         return back();
     }
-    
 }

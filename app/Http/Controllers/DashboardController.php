@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+    public $dadosTemplate;
     /**
      * Create a new controller instance.
      *
@@ -14,6 +15,19 @@ class DashboardController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $moduleInfo = [
+            'icon' => 'store',
+            'name' => 'Estoque',
+        ];
+        $menu = [
+            ['icon' => 'shopping_basket', 'tool' => 'Produto', 'route' => url('/estoque/produto')],
+            ['icon' => 'format_align_justify', 'tool' => 'Categoria', 'route' => url('/estoque/produto/categoria')],
+            ['icon' => 'store', 'tool' => 'Estoque', 'route' => url('estoque')],
+        ];
+        $this->dadosTemplate = [
+            'moduleInfo' => $moduleInfo,
+            'menu' => $menu,
+        ];
     }
 
     /**
@@ -23,6 +37,6 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('templates.dashboard');
+        return view('templates.dashboard',$this->dadosTemplate);
     }
 }
