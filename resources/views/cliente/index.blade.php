@@ -8,10 +8,10 @@
     <thead class="">
 
         <div class="col-12 text-right mb-4">
-            <a class="btn btn-success btn-sm" href="{{url('/usuario/create')}}">
+            <a class="btn btn-success btn-sm" href="{{url('/cliente/create')}}">
                 <i class="material-icons" style="vertical-align:middle; font-size:25px;">note_add</i>Adicionar
             </a>
-            <a class="btn btn-danger btn-sm" href="{{ url('usuario/inativos')}}">
+            <a class="btn btn-danger btn-sm" href="{{ url('clientes/inativos') }}">
                 <i class="material-icons" style="vertical-align:middle; font-size:25px;">delete</i>Inativos
             </a>
         </div>
@@ -19,30 +19,32 @@
             <th scope="col">ID</th>
             <th scope="col">Nome</th>
             <th scope="col">Email</th>
+            <th scope="col">Data de Nascimento</th>
             <th scope="col">Visualizar</th>
             <th scope="col">Editar</th>
             <th scope="col">Excluir</th>
         </tr>
     </thead>
     <tbody>
-        @foreach($usuarios as $usuario)
+        @foreach($clientes as $cliente)
         <tr>
-            <td>{{$usuario->id}}</td>
-            <td>{{$usuario->nome}}</td>
-            <td>{{$usuario->user->email}}</td>
+            <td>{{$cliente->id}}</td>
+            <td>{{$cliente->nome}}</td>
+            <td>{{$cliente->dt_nascimento}}</td>
+            <td>{{$cliente->user->email}}</td>
             <td>
-                <a href="{{ url('usuario/'. $usuario->id ) }}"><button class="btn btn-primary btn-sm"> <i class="material-icons">remove_red_eye</i></button></a>
+                <a href="{{ url('cliente/'. $cliente->id ) }}"><button class="btn btn-primary btn-sm"> <i class="material-icons">remove_red_eye</i></button></a>
             </td>
             <td>
-                <a class="btn btn-sm btn-info" href="{{url('usuario/'.$usuario->id .'/edit')}}">
+                <a class="btn btn-sm btn-info" href="{{url('cliente/'.$cliente->id .'/edit')}}">
                     <i class="material-icons">border_color</i>
                 </a>
             </td>
             <td>
-                <form method="POST" action="{{url('usuario/'. $usuario->id)}}" id="formDelete">
+                <form method="POST" action="{{url('cliente/'. $cliente->id)}}" id="formDelete">
                     @method('delete')
                     @csrf
-                    <button type="submit" data-id="{{$usuario->id}}" class="btn btn-sm btn-danger del" data-toggle="modal" data-target="#modal">
+                    <button type="submit" data-id="{{$cliente->id}}" class="btn btn-sm btn-danger del" data-toggle="modal" data-target="#modal">
 
                         <i class="material-icons">delete</i>
                     </button>
@@ -55,15 +57,15 @@
         <tr>
             <td colspan="100%" class="text-center">
                 <p class="text-cetner">
-                    Página {{$usuarios->currentPage()}} de {{$usuarios->lastPage()}}
-                    -Exibido {{$usuarios->perPage()}} registro(s) por página. Total de itens: {{$usuarios->total()}}
+                    Página {{$clientes->currentPage()}} de {{$clientes->lastPage()}}
+                    -Exibido {{$clientes->perPage()}} registro(s) por página. Total de itens: {{$clientes->total()}}
                 </p>
             </td>
         </tr>
-        @if($usuarios->lastPage() > 1)
+        @if($clientes->lastPage() > 1)
         <tr>
             <td colspan="100%" class="text-center">
-                {{ $usuarios->links() }}
+                {{ $clientes->links() }}
             </td>
         </tr>
         @endif
@@ -76,7 +78,7 @@
 
         <div class="col-12 text-right mb-4">
 
-            <a class="btn btn-info btn-sm" href="{{ url('usuario')}}">
+            <a class="btn btn-info btn-sm" href="{{ url('cliente')}}">
                 <i class="material-icons" style="vertical-align:middle; font-size:25px;">keyboard_backspace</i>Voltar
             </a>
         </div>
@@ -84,22 +86,20 @@
             <th scope="col">ID</th>
             <th scope="col">Nome</th>
             <th scope="col">Email</th>
+            <th scope="col">Data de Nascimento</th>
             <th scope="col">Restaurar</th>
 
         </tr>
     </thead>
     <tbody>
-        @foreach($usuariosInativos as $usuario)
+        @foreach($clientesInativos as $cliente)
         <tr>
-            <td>{{$usuario->id}}</td>
-            <td>{{$usuario->nome}}</td>
-            <td>{{$usuario->user->email}}</td>
+            <td>{{$cliente->id}}</td>
+            <td>{{$cliente->nome}}</td>
+            <td>{{$cliente->dt_nascimento}}</td>
+            <td>{{$cliente->user->email}}</td>
             <td>
-                <form method="POST" action="{{ url('usuario/'.$usuario->id. '/restore' ) }}">
-                @method('put')
-                @csrf
-                <button type="submit" class="btn btn-primary btn-sm"> <i class="material-icons">restore_from_trash</i></button>
-                </form>
+                <a href="{{ url('cliente/'. $cliente->id .'restore') }}"><button class="btn btn-primary btn-sm"> <i class="material-icons">restore_from_trash</i></button></a>
             </td>
 
         </tr>
@@ -109,15 +109,15 @@
         <tr>
             <td colspan="100%" class="text-center">
                 <p class="text-cetner">
-                    Página {{$usuariosInativos->currentPage()}} de {{$usuariosInativos->lastPage()}}
-                    -Exibido {{$usuariosInativos->perPage()}} registro(s) por página. Total de itens: {{$usuariosInativos->total()}}
+                    Página {{$clientesInativos->currentPage()}} de {{$clientesInativos->lastPage()}}
+                    -Exibido {{$clientesInativos->perPage()}} registro(s) por página. Total de itens: {{$clientesInativos->total()}}
                 </p>
             </td>
         </tr>
-        @if($usuariosInativos->lastPage() > 1)
+        @if($clientesInativos->lastPage() > 1)
         <tr>
             <td colspan="100%" class="text-center">
-                {{ $usuariosInativos->links() }}
+                {{ $clientesInativos->links() }}
             </td>
         </tr>
         @endif
@@ -146,18 +146,3 @@
 </div>
 
 @endsection
-
-@yield('js')
-<script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('.del').click(function(e) {
-            e.preventDefault()
-
-        })
-
-        $('#excluir').click(function() {
-            $('#formDelete').submit()
-        })
-    })
-</script>

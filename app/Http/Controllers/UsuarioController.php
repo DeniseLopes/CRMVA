@@ -10,41 +10,23 @@ use DB;
 
 class UsuarioController extends Controller
 {
-    public $dadosTemplate;
+   
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     /*Todas as páginas que utilizarem este controlador passaram pelo filtro de auth, exceto o metodo index*/
-    public function __construct()
-    {
-        $this->middleware('auth')->except('index');
-        $moduleInfo = [
-            'icon' => 'store',
-            'name' => 'Estoque',
-        ];
-        $menu = [
-            ['icon' => 'shopping_basket', 'tool' => 'Produto', 'route' => url('/')],
-            ['icon' => 'format_align_justify', 'tool' => 'Categoria', 'route' => url('/')],
-            ['icon' => 'store', 'tool' => 'Estoque', 'route' => url('estoque')],
-        ];
-        $this->dadosTemplate = [
-            'moduleInfo' => $moduleInfo,
-            'menu' => $menu,
-        ];
-    }
+ 
 
-    public function index(Usuario $usuario)
+    public function index()
     {
         //Usuario ativos
         $data = ['title' => 'Usuários'];
         $usuarios = Usuario::paginate(5);
         $flag = 1;
-
-        //Excluido e não excluido
-        $usuariosDeletados = Usuario::onlyTrashed()->get();
-        return view('usuario.index', compact('usuarios', 'usuariosDeletados', 'flag', 'data'));
+     
+        return view('usuario.index', compact('usuarios', 'flag', 'data'));
     }
     public function show($id)
     {
@@ -138,6 +120,6 @@ class UsuarioController extends Controller
         $flag = 0;
         $data = ['title' => 'Usuários Inativos'];
         //dd($usuarioInativo);
-        return view('usuario.index', compact('usuariosInativos', 'flag', 'data'));
+        return redirect('/usuario')->with('success','Usuario restaurado com sucesso');
     }
 }

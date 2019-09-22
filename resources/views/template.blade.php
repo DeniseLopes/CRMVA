@@ -6,9 +6,9 @@ $moduleInfo = [
 ];
 $menu = [
     ['icon' => 'person', 'tool' => 'Usuarios', 'route' => url('/usuario')],
-    ['icon' => 'person', 'tool' => 'Clientes', 'route' => url('/')],
-    ['icon' => 'chrome_reader_mode', 'tool' => 'DS-160', 'route' => url('estoque')],
-    ['icon' => 'date_range', 'tool' => 'Agendamentos', 'route' => url('estoque')],
+    ['icon' => 'person', 'tool' => 'Clientes', 'route' => url('/cliente')],
+    ['icon' => 'chrome_reader_mode', 'tool' => 'DS-160', 'route' => url('#')],
+    ['icon' => 'date_range', 'tool' => 'Agendamentos', 'route' => url('#')],
 ];
 
 ?><!DOCTYPE html>
@@ -170,7 +170,7 @@ $menu = [
                     </button>
                 </div>
                 @endif
-                <div class="container">
+                <div class="container-fluid">
 
                     <div class="card text-center">
 

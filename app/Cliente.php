@@ -7,33 +7,23 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Cliente extends Model
 {
-    Use SoftDeletes;
+    //
+    use SoftDeletes;
     protected $table = 'cliente';
-    public $timestamps = false;
-    protected $fillable = array('id');
+    protected $fillable = ['nome', 'email', 'dt_nascimento'];
 
-    //Relação com a tabela Pessoa
-    public function pessoa()
+
+    public function telefones()
     {
-        return $this->belongsTo('App\Pessoa');
+        return $this->hasMany('App\Telefone');
+    }
+    public function documentos()
+    {
+        return $this->hasMany('App\Documento');
     }
 
-    //Relação com a tabela Endereco
-    public function endereco()
+    public function enderecos()
     {
         return $this->hasMany('App\Endereco');
     }
-
-    //Relação com a tabela Passaporte
-    public function passaporte()
-    {
-        return $this->hasOne('App\Passaporte');
-    }
-
-    //Relação com a tabela Ds
-    public function ds()
-    {
-        return $this->hasOne('App\Ds');
-    }
-
 }
