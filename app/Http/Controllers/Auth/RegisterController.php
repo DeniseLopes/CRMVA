@@ -70,8 +70,6 @@ class RegisterController extends Controller
         ]);
          Usuario::create([
             'nome'=> $user->name,
-            'email'=>$user->email,
-            'senha'=>$user->password,
             'user_id'=>$user->id
         ]);
         return $user;

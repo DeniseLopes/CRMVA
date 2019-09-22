@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\Usuario;
+use App\{Usuario, User, Nivel};
 use Illuminate\Support\Facades\Hash;
-
 use Illuminate\Http\Request;
+use DB;
 
 
 class UsuarioController extends Controller
@@ -36,61 +35,109 @@ class UsuarioController extends Controller
         ];
     }
 
-    public function index(User $usuario)
+    public function index(Usuario $usuario)
     {
         //Usuario ativos
-        $usuarios = User::all();
+        $data = ['title' => 'Usuários'];
+        $usuarios = Usuario::paginate(5);
+        $flag = 1;
 
         //Excluido e não excluido
-        $usuariosDeletados = User::onlyTrashed()->get();
-        return view('usuario.index', compact('usuarios', 'usuariosDeletados'));
+        $usuariosDeletados = Usuario::onlyTrashed()->get();
+        return view('usuario.index', compact('usuarios', 'usuariosDeletados', 'flag', 'data'));
+    }
+    public function show($id)
+    {
+        $usuario = Usuario::findOrFail($id);
+        
+
+        return view('usuario.show',compact('usuario'));
+    }
+    public function create()
+    {
+        $data = [
+            'title' => 'Cadastrar de Usuário',
+            'url'  => url('usuario'),
+            'nivel'=> Nivel::all()
+        ];
+        return view('usuario.form', compact('data'));
+    }
+
+    public function store(Request $request)
+    {
+        // dd($request->all());
+        DB::beginTransaction();
+        try {
+            $nivel = Nivel::where('nome', $request->nivel)->get()->last();
+            $user = User::create([
+                'name' => $request->nome,
+                'email' => $request->email,
+                'password' => Hash::make($request->senha),
+            ]);
+            $usuario = Usuario::create([
+                'nome' => $user->name,
+                'user_id' => $user->id
+            ]);
+            $usuario->nivel()->associate($nivel);
+            $usuario->save();
+            DB::commit();
+
+            return redirect('usuario')->with('success', 'Usuário cadastrado com sucesso!');
+        } catch (Exception $e) {
+            DB::rollback();
+            return back()->with('error', 'erro ao tentar cadastrar usuário. cod: ' . $e);
+        }
     }
 
     public function edit(Request $request, $id)
     {
-        $usuario = User::findOrFail($id);
-        return view('auth.register', compact('usuario'));
+        $data = [
+            'title' => 'Editar Usuário',
+            'url'  => url('usuario/' . $id),
+            'nivel'=> Nivel::all()
+        ];
+        $usuario = Usuario::findOrFail($id);
+        return view('usuario.form', compact('usuario', 'data'));
     }
 
 
     public function update(Request $request, $id)
     {
-        //   dd($request->all());
-
-        $usuario = User::findOrFail($id);
-
-        $data = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password,
-
-        ];
-        $senha = $data['password'];
-
-        if (strlen($senha) >= 8) {
-            $data['password'] = Hash::make($data['password']);
-            $usuario->update($data);
-        } else {
-            return back()->with('message', 'A senha deve conter no minimo 8 digitos');
+        DB::beginTransaction();
+        try {
+            $nivel = Nivel::where('nome', $request->nivel)->get()->last();
+            $usuario = Usuario::findOrFail($id);
+            $usuario->update($request->all());
+            $usuario->nivel()->associate($nivel)->save();
+        DB::commit();
+            return redirect()->route('usuario.index')->with('success', 'Usuário atualizado com sucesso');    
+        } catch (Exception $e) { 
+            DB::rollback();
+            return back()->with('error', 'erro ao tentar atualizar usuário. cod: ' . $e);
         }
-
-
-        return redirect()->route('usuario.index')->with('message', 'Usuário atualizado com sucesso');
     }
 
     public function destroy($id)
     {
 
-        $usuario = User::findOrFail($id);
+        $usuario = Usuario::findOrFail($id);
 
         $usuario->delete();
-        return back()->with('message', 'Usuário removido com sucesso');
+        return back()->with('success', 'Usuário removido com sucesso');
     }
 
     public function restore($id)
     {
-        $usuario = User::onlyTrashed()->findOrFail($id);
+        $usuario = Usuario::onlyTrashed()->findOrFail($id);
         $usuario->restore();
         return back();
+    }
+
+    public function inativos(){
+        $usuariosInativos = Usuario::onlyTrashed()->paginate(5);
+        $flag = 0;
+        $data = ['title' => 'Usuários Inativos'];
+        //dd($usuarioInativo);
+        return view('usuario.index', compact('usuariosInativos', 'flag', 'data'));
     }
 }

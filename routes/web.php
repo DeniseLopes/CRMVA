@@ -32,6 +32,8 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 /*Usuario*/
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('/usuario', 'UsuarioController');
     Route::put('/restore/{id}', 'UsuarioController@restore');
+    Route::get('/usuario/inativos', 'UsuarioController@inativos');
+    Route::resource('/usuario', 'UsuarioController');
+ 
 });

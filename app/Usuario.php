@@ -12,12 +12,18 @@ class Usuario extends Model
     use SoftDeletes;
     protected $table = 'usuario';
     public $timestamps = false;
-    protected $fillable = array('id', 'nome', 'email', 'senha', 'user_id');
+    protected $fillable = array('id', 'nome', 'dt_nascimento', 'user_id', 'nivel_id');
 
+
+
+    public function nivel()
+    {
+        return $this->belongsTo('App\Nivel');
+    }
     //Relação com a tabela Users
     public function user()
     {
-        return $this->hasOne('App\User');
+        return $this->belongsTo('App\User');
     }
     //Relação com a tabela Endereco
     public function endereco()

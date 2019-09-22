@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Usuario extends Migration
+class Nivel extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class Usuario extends Migration
      */
     public function up()
     {
-        Schema::create('usuario', function (Blueprint $table) {
+        //
+        Schema::create('nivel', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome');
-            $table->date('dt_nascimento')->nullable();
-            $table->integer('user_id')->unsigned()->nullable();
-            $table->integer('nivel_id')->unsigned()->nullable();
+            $table->enum('nome', ['Administrador','Operador']);
             $table->softDeletes();
+            
         });
     }
 
@@ -30,6 +29,7 @@ class Usuario extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('usuario');
+        Schema::dropIfExists('nivel');
+        //
     }
 }

@@ -1,22 +1,22 @@
 <?php
 
 $moduleInfo = [
-    'icon' => 'store',
-    'name' => 'Estoque',
+    'icon' => 'emoji_flags',
+    'name' => 'Kosloski Vistos',
 ];
 $menu = [
-    ['icon' => 'shopping_basket', 'tool' => 'Produto', 'route' => url('/')],
-    ['icon' => 'format_align_justify', 'tool' => 'Categoria', 'route' => url('/')],
-    ['icon' => 'store', 'tool' => 'Estoque', 'route' => url('estoque')],
+    ['icon' => 'person', 'tool' => 'Usuarios', 'route' => url('/usuario')],
+    ['icon' => 'person', 'tool' => 'Clientes', 'route' => url('/')],
+    ['icon' => 'chrome_reader_mode', 'tool' => 'DS-160', 'route' => url('estoque')],
+    ['icon' => 'date_range', 'tool' => 'Agendamentos', 'route' => url('estoque')],
 ];
 
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>FreeERP @yield('title')</title>
+    <title>Kosloski Vistos - @yield('title')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -29,42 +29,34 @@ $menu = [
             min-width: 210px;
             min-height: 100vh;
         }
-
         #sidebar a {
             color: #cfd8dc
         }
-
         #sidebar a:hover {
             background: #29353d
         }
-
         #sidebar a.active {
             color: #fff;
             background: #29353d;
         }
-
         #module-info {
             color: #fff;
             min-height: 64px;
             padding-left: 10px;
         }
-
         #module-info i {
             font-size: 36px;
         }
-
         #module-info h1 {
             max-width: 100px;
             font-size: 18px;
             margin: 0;
         }
-
         #workspace {
             width: 100%;
             margin-left: 210px;
             background: #f3f6f7;
         }
-
         #header {
             z-index: 99;
             width: calc(100% - 210px);
@@ -74,26 +66,22 @@ $menu = [
             height: 64px;
             color: #5f6368;
         }
-
         #content {
             margin-top: 64px;
             padding: 16px;
             min-height: calc(100vh - 128px);
         }
-
         #footer {
             color: #5f6368;
             height: 64px;
             padding-left: 16px;
             border-top: 1px solid #cfd8dc;
         }
-
         .btn-circle {
             border-radius: 50%;
             cursor: pointer;
             padding: 10px;
         }
-
         .btn-circle:hover {
             background: #ededed;
         }
@@ -124,8 +112,37 @@ $menu = [
                     <span>Menu</span>
                 </div>
                 <div class="d-flex align-items-center">
-                    <i class="material-icons mr-2 btn-circle">apps</i>
-                    <i class="material-icons btn-circle">person</i>
+                <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
                 </div>
             </div>
             <div id="content">
