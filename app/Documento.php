@@ -8,7 +8,7 @@ class Documento extends Model
 {
     //Attributes
     protected $table = "documento";
-    protected $fillable = ['numero', 'tipo', 'emissao', 'vencimento', 'cliente_id', 'tipo_documento'];
+    protected $fillable = ['numero', 'emissao', 'vencimento', 'cliente_id', 'tipo_documento_id'];
 
 
     //Functions

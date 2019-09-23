@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\{Cliente, Documento, Endereco,Telefone};
+use App\{Cliente, Documento, Endereco, Telefone};
 use Illuminate\Http\Request;
 use DB;
+use Exception;
 
 class ClienteController extends Controller
 {
@@ -15,7 +16,7 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $data = ['title'=>'Clientes'];
+        $data = ['title' => 'Clientes'];
         $clientes = Cliente::paginate(5);
         $flag = 1;
 
@@ -45,6 +46,19 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         //
+        //dd($request->all());
+        DB::beginTransaction();
+        try {
+            $cliente = Cliente::create($request->all());
+
+            if ($request->cep != null) {
+                $endereco = Endereco::create(['cliente_id' => $cliente->id,  'cep' => $request->cep]);
+                $endereco->update($request->all());
+                dd($cliente->enderecos);
+            }
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
     }
 
     /**
@@ -92,7 +106,8 @@ class ClienteController extends Controller
         //
     }
 
-    public function inativos(){
+    public function inativos()
+    {
         $usuariosInativos = Usuario::onlyTrashed()->paginate(5);
         $flag = 0;
         $data = ['title' => 'Usuários Inativos'];

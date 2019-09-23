@@ -19,8 +19,9 @@ class Cliente extends Migration
             $table->string('nome');
             $table->date('dt_nascimento')->nullable();
             $table->integer('email')->unsigned()->nullable();
-            $table->enum('tipo_cliente',['Físico','Jurídico']); // Físico ou Jurídico
+            $table->enum('tipo_cliente',['Físico','Jurídico'])->nullable(); // Físico ou Jurídico
             $table->softDeletes();
+           
         });
     }
 

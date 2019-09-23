@@ -15,8 +15,8 @@ class Documentos extends Migration
     {
         Schema::create('documento', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('numero');
-            $table->integer('tipo_documento');
+            $table->string('numero_documento');
+            $table->integer('tipo_documento_id');
             $table->date('emissao')->nullable();
             $table->date('vencimento')->nullable();
             $table->integer('cliente_id')->unsigned()->index('fk_cliente3');

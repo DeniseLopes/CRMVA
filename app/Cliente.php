@@ -9,6 +9,7 @@ class Cliente extends Model
 {
     //
     use SoftDeletes;
+    public $timestamps = false;
     protected $table = 'cliente';
     protected $fillable = ['nome', 'email', 'dt_nascimento'];
 

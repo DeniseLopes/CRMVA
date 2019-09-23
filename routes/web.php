@@ -23,8 +23,8 @@ Route::get('/', function () {
 
 
 Auth::routes();
-Route::get('/login', function(){
-    $data=['title'=>'Pagina de Login'];
+Route::get('/login', function () {
+    $data = ['title' => 'Pagina de Login'];
     return view('auth.login', compact('data'));
 });
 
@@ -32,11 +32,10 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 /*Usuario*/
 Route::group(['middleware' => 'auth'], function () {
-    
+
     Route::get('/usuario/inativos', 'UsuarioController@inativos');
     Route::resource('/usuario', 'UsuarioController');
     Route::put('/usuario/{id}/restore', 'UsuarioController@restore');
- 
 });
 
 //Cliente
@@ -44,3 +43,6 @@ Route::prefix('cliente')->group(function () {
     Route::get('/inativos', 'ClienteController@inativos');
 });
 Route::resource('/cliente', 'ClienteController');
+Route::get('teste', function () {
+    return 1;
+});

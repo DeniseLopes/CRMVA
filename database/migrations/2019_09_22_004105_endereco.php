@@ -17,11 +17,12 @@ class Endereco extends Migration
         Schema::create('endereco', function (Blueprint $table) {
             $table->increments('id');
             $table->string('cep');
-            $table->string('logradouro');
-            $table->string('complemento');
-            $table->string('bairro');
-            $table->string('cidade');
-            $table->string('uf');
+            $table->string('logradouro')->nullable();
+            $table->integer('endereco_numero')->nullable();
+            $table->string('complemento')->nullable();
+            $table->string('bairro')->nullable();
+            $table->string('cidade')->nullable();
+            $table->string('uf')->nullable();
             $table->integer('cliente_id')->unsigned()->index('fk_cliente');
             $table->softDeletes();
         });
