@@ -16,6 +16,7 @@ class Telefone extends Migration
         //
         Schema::create('telefone', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('cod_pais');
             $table->string('numero');
             $table->integer('tipo_telefone_id')->unsigned()->index('fk_tipo_telefone1');
             $table->integer('cliente_id')->unsigned()->index('fk_cliente2');

@@ -124,14 +124,14 @@
                     <input type="text" class="form-control" id="cod_pais" name="cod_pais">
 
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-1">
                     <label for="email">DDD: </label>
 
                     <input type="text" class="form-control" id="ddd" name="ddd">
 
                 </div>
                 <!--Numero de telefone -->
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <label for="email">Numero: </label>
                     <input type="text" class="form-control" id="numero" name="numero_telefone">
 
@@ -146,8 +146,8 @@
 
             <p class="   card-header text-secondary font-weight-bold text-left bg-light bg-gradient-dark">Documentos:</p>
             <div action="" class="form-row">
-                <div class="col-md-2">
-                    <label for="nome">Tipo Documento: </label>
+                <div class="col-lg-2 col-md-6 col-sm-12">
+                    <label for="nome"> Documento: </label>
                     <select class="form-control custom-select tipo_documento" id="tipo_documento" name="tipo_documento_id">
                         <option value="0">Selecione</option>
                         <option value="1">CPF</option>
@@ -156,7 +156,7 @@
                 </div>
 
                 <!--Numero Doc -->
-                <div class="col-md-4 numero">
+                <div class="col-lg-4 col-md-6 col-sm-12 numero">
                     <label for="numero">Numero: </label>
                     <input type="text" class="form-control" id="numero" name="numero_documento">
                     <div class="valid-tooltip">
@@ -166,14 +166,14 @@
 
                 <!--Data de emissão Passaporte-->
 
-                <div class="col-md-2 datas">
-                    <label for="emissao">Data de emissão</label>
+                <div class="col-lg-2 col-md-6 col-sm-12 datas">
+                    <label for="emissao">Emissão</label>
                     <input type="date" class="form-control dt_emissao" name="dt_emissao">
                 </div>
 
                 <!--Data de vencimento Passaporte-->
-                <div class="col-md-2 datas">
-                    <label for="emissao">Data de vencimento</label>
+                <div class="col-lg-2 col-md-6 col-sm-12 datas">
+                    <label for="emissao">Vencimento</label>
                     <input type="date" class="form-control dt_emissao" name="dt_vencimento">
                 </div>
             </div>
@@ -201,10 +201,15 @@
         $('.tipo_documento').change(function() {
             var tipo_documento = $('.tipo_documento').val()
             if (tipo_documento == 1) {
-                $('.numero').show()
+                $('.numero').fadeIn()
+                $('.datas').fadeOut();
             } else if (tipo_documento == 2) {
-                $('.numero').show()
-                $('.datas').show()
+                $('.numero').fadeIn()
+                $('.datas').fadeIn()
+            } else {
+                $('.numero','.datas').fadeOut()
+            //    $('.datas').hide()
+
             }
         })
         $('.cep').blur(function() {
